@@ -16,9 +16,10 @@ def test_clamp_always_within_bounds(x, lo, hi):
 def test_clamp_logic_branches():
     assert clamp(5, 10, 20) == 10
 
-@given(st.integers(), st.integers(), st.integers())
-def test_clamp_identity_inside_bounds(x, lo, hi):
-    assume(lo <= x <= hi)
+@given(st.lists(st.integers(), min_size=3, max_size=3).map(sorted))
+def test_clamp_identity_inside_bounds(values):
+    # 'values' este mereu o listă de 3 elemente deja sortate crescător
+    lo, x, hi = values
     assert clamp(x, lo, hi) == x
 
 def test_clamp_boundary_explicit():

@@ -1,0 +1,1 @@
+acesta este un text de test pentru a vedea cum functioneaza profilarea in c++ cu perf si flamegraphs
